@@ -1,0 +1,30 @@
+[user]
+	name = Akshay Patel
+	email = akshayrpatel@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore
+	pager = cat
+    whitespace = space-before-tab,trailing-space
+
+[color]
+	ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[merge]
+    log = true
+
+[push]
+	default = simple
