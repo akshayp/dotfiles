@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_local
 
 # Exports
-export PATH=$PATH:/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin
+export PATH=/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:$PATH
 export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
 export TERM="xterm-color"
 export CLICOLOR="true"
