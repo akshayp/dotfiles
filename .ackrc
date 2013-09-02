@@ -5,9 +5,6 @@
 # Always color, even if piping to another program
 --color
 
-# Use my less options
---pager=less -iqRS
-
 # HAML & SASS
 --type-add=css=.sass,.scss
 --type-add=html=.dust
