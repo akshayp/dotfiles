@@ -3,23 +3,31 @@
 # Variables
 green='\033[1;32m'
 yellow='\033[1;33m'
+blue='\033[1;34m'
 nocolor='\033[0m'
 dotfiles=`find . -type f -name ".*"`
 homedir=${HOME}"/"
 dir=$(pwd)
 
 # Functions
+function ascii() {
+    echo -e "${blue}${@}${nocolor}"
+}
+
 function log() {
-    echo -e "${green}${@}${nocolor}"
+    echo -e "\n${green}${@}${nocolor}"
 }
 
 function warning() {
-    echo -e "${yellow}${@}${nocolor}"
+    echo -e "\n⇏ ${yellow}${@}${nocolor}"
+}
+
+function brewski() {
+    brew install "${@}"
 }
 
 function installcask() {
-    echo "foo"
-    #brew cask install "${@}" 2> /dev/null
+    brew cask install "${@}" 2> /dev/null
 }
 
 # Start Magic
@@ -30,25 +38,25 @@ else
     warning "Brew already installed"
 fi
 
-log "Updating Brew ✈ ✈ ✈"
+log "Updating Brew ..."
 brew update
 brew upgrade
 
-log "Installing Brew Binaries ✈ ✈ ✈"
-brew install wget --enable-iri
-brew install ack
-brew install git
-brew install node
-brew install colordiff
-brew install htop-osx
-brew install ncdu
-brew install phantomjs
+log "Installing Brew Binaries ..."
+brewski wget
+brewski ack
+brewski git
+brewski node
+brewski colordiff
+brewski htop-osx
+brewski ncdu
+brewski phantomjs
 
-log "Installing Brew Cask ✈ ✈ ✈"
+log "Installing Brew Cask ..."
 brew tap phinze/homebrew-cask
-brew install brew-cask
+brewski brew-cask
 
-log "Cask OSX Software ✈ ✈ ✈"
+log "Casking OSX Software ..."
 installcask adium
 installcask dropbox
 installcask evernote
@@ -63,38 +71,56 @@ installcask skype
 installcask the-unarchiver
 installcask vlc
 
-log "Cleanup Brew ✈ ✈ ✈"
+log "Cleanup Brew ..."
 brew cleanup
 
-log "Installing Global NPM Packages ✈ ✈ ✈"
-npm install grunt grunt-cli jshint node-dev -g
+log "Installing Global NPM Packages ..."
+#npm install grunt grunt-cli jshint node-dev -g
 
-log "Checking for ZSH ✈ ✈ ✈"
+log "Checking for ZSH ..."
 
 if [ -d ~/.oh-my-zsh ]; then
     warning "You already have Oh My Zsh installed."
 else
-    log "Installing ZSH ✈ ✈ ✈"
+    log "Installing ZSH ..."
     git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     chsh -s `which zsh`
     /usr/bin/env zsh
 fi
 
-log "Copying [dot]files ✈ ✈ ✈"
+log "Copying [dot]files ..."
 
 mkdir -p ~/dotfiles_old
 
 for file in $dotfiles; do
     file=${file//.\/}
-    if [ -f $homedir$file ]; then
-        warning "Backup $file ~ to ~/dotfiles_old"
-        mv ~/$file ~/dotfiles_old/
+
+    # Skip if it's already a symlink
+    if ! [ -L $homedir$file ]; then
+
+        if [ -f $homedir$file ]; then
+            warning "Backup $file ~ to ~/dotfiles_old"
+            mv ~/$file ~/dotfiles_old/
+        fi
+
+        log "Linking $file to ~"
+        ln -s $dir/$file ~/$file
     fi
-    log "Linking $file to ~"
-    ln -s $dir/$file ~/$file
 done
+
+ascii "
+        ______   _______  __    _  _______
+       |      | |       ||  |  | ||       |
+       |  _    ||   _   ||   |_| ||    ___|
+       | | |   ||  | |  ||       ||   |___
+       | |_|   ||  |_|  ||  _    ||    ___|
+       |       ||       || | |   ||   |___
+       |______| |_______||_|  |__||_______|
+      "
 
 # Remove functions
 unset log
 unset warning
 unset installcask
+unset brewski
+unset ascii
