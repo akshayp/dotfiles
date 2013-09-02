@@ -75,7 +75,7 @@ log "Cleanup Brew ..."
 brew cleanup
 
 log "Installing Global NPM Packages ..."
-#npm install grunt grunt-cli jshint node-dev -g
+npm install grunt grunt-cli jshint node-dev -g
 
 log "Checking for ZSH ..."
 

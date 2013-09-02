@@ -23,6 +23,7 @@ alias home="cd ~"
 alias desktop="cd ~/Desktop"
 alias download="cd ~/Downloads"
 alias edit="subl"
+alias e="subl"
 alias svndiff="svn diff --diff-cmd colordiff"
 
 # System Stats
