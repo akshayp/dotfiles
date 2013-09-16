@@ -30,3 +30,4 @@
 # Ignore
 --ignore-dir=build
 --ignore-dir=node_modules
+--ignore-dir=coverage
