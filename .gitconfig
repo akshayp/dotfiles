@@ -1,10 +1,10 @@
 [user]
-	name = Akshay Patel
-	email = akshayrpatel@gmail.com
+    name = Akshay Patel
+    email = akshayrpatel@gmail.com
 
 [core]
-	excludesfile = ~/.gitignore
-	pager = cat
+    excludesfile = ~/.gitignore
+    pager = cat
     whitespace = space-before-tab,trailing-space
 
 [color]
@@ -27,4 +27,4 @@
     log = true
 
 [push]
-	default = simple
+    default = simple
