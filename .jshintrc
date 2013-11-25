@@ -12,7 +12,7 @@
     "noarg" : true,
     "node" : true,
     "noempty" : true,
-    "strict" : false,
+    "strict" : true,
     "onevar" : true,
     "trailing" : true,
     "undef" : true,
