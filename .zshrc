@@ -52,3 +52,6 @@ setopt APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
+
+#Autocompletion
+eval "$(grunt --completion=zsh)"
