@@ -43,14 +43,14 @@ brew update
 brew upgrade
 
 log "Installing Brew Binaries ..."
-brewski wget
 brewski ack
+brewski colordiff
 brewski git
 brewski node
-brewski colordiff
-brewski htop-osx
 brewski ncdu
+brewski nmap
 brewski phantomjs
+brewski wget
 
 log "Installing Brew Cask ..."
 brew tap phinze/homebrew-cask
@@ -75,7 +75,7 @@ log "Cleanup Brew ..."
 brew cleanup
 
 log "Installing Global NPM Packages ..."
-npm install grunt grunt-cli jshint node-dev -g
+npm install grunt grunt-cli jshint nodemon mocha -g
 
 log "Checking for ZSH ..."
 
