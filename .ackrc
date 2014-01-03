@@ -31,3 +31,6 @@
 --ignore-dir=build
 --ignore-dir=node_modules
 --ignore-dir=coverage
+--ignore-dir=artifacts
+--ignore-dir=coverage
+--ignore-dir=tmp
