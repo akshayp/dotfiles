@@ -36,12 +36,17 @@ plugins=(git brew colored-man extract git-extras node npm svn)
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_local
 
+#Override
+alias l='lsemoji'
+alias la='lsemoji -la'
+
 # Exports
 export PATH=/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:$PATH
 export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
 export TERM="xterm-color"
 export CLICOLOR="true"
 export LSCOLORS="exfxcxdxbxegedabagacad" #I like these LS colors better
+export EDITOR="subl"
 
 # History Management
 HISTFILE=~/.history
