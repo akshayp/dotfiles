@@ -75,7 +75,7 @@ log "Cleanup Brew ..."
 brew cleanup
 
 log "Installing Global NPM Packages ..."
-npm install grunt grunt-cli jshint nodemon mocha -g
+npm install grunt-cli jshint nodemon jitsu nodemon depcheck http-server -g
 
 log "Checking for ZSH ..."
 
