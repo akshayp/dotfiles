@@ -74,6 +74,9 @@ installcask vlc
 log "Cleanup Brew ..."
 brew cleanup
 
+log "Install httpie"
+easy_install httpie
+
 log "Installing Global NPM Packages ..."
 npm install grunt-cli jshint nodemon jitsu nodemon depcheck http-server -g
 
