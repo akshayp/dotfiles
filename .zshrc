@@ -24,8 +24,9 @@ alias desktop="cd ~/Desktop"
 alias download="cd ~/Downloads"
 alias edit="subl"
 alias e="subl"
-alias curl="http"
+alias c="http"
 alias svndiff="svn diff --diff-cmd colordiff"
+alias gitsync="git fetch upstream; git merge upstream/master; git push"
 
 # System Stats
 alias up="uptime"
