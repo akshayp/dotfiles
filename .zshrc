@@ -36,7 +36,6 @@ alias df="df -h"
 #Plugins
 plugins=(git brew colored-man extract git-extras node npm svn)
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh_local
 
 #Override
 alias l='lsemoji'
@@ -48,7 +47,7 @@ export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
 export TERM="xterm-color"
 export CLICOLOR="true"
 export LSCOLORS="exfxcxdxbxegedabagacad" #I like these LS colors better
-export EDITOR="subl"
+export EDITOR='subl -w'
 
 # History Management
 HISTFILE=~/.history
@@ -62,3 +61,8 @@ setopt HIST_IGNORE_ALL_DUPS
 
 #Autocompletion
 eval "$(grunt --completion=zsh)"
+
+#Local zsh overrides
+if [ -e ~/.zsh_local ]; then
+    source ~/.zsh_local
+fi

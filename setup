@@ -80,6 +80,9 @@ easy_install httpie
 log "Installing Global NPM Packages ..."
 npm install grunt-cli jshint nodemon jitsu nodemon depcheck http-server -g
 
+log "Linking Sublime Text CLI"
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
+
 log "Checking for ZSH ..."
 
 if [ -d ~/.oh-my-zsh ]; then
