@@ -98,6 +98,11 @@ log "Copying [dot]files ..."
 
 mkdir -p ~/dotfiles_old
 
+log "Adding zsh_local for overrides"
+if [ ! -e ~/.zsh_local ]; then
+    touch ~/.zsh_local
+fi
+
 for file in $dotfiles; do
     file=${file//.\/}
 
