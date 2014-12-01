@@ -34,3 +34,4 @@
 --ignore-dir=artifacts
 --ignore-dir=coverage
 --ignore-dir=tmp
+--ignore-dir=vendor
