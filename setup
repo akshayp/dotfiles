@@ -34,7 +34,7 @@ function installcask() {
 if test ! $(which brew); then
     log "Installing Brew ✈ ✈ ✈"
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
-else 
+else
     warning "Brew already installed"
 fi
 
@@ -46,6 +46,7 @@ log "Installing Brew Binaries ..."
 brewski ack
 brewski colordiff
 brewski git
+brewski git-extras
 brewski node
 brewski ncdu
 brewski nmap
