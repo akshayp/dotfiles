@@ -34,7 +34,7 @@ alias sup="ps auxwww"
 alias df="df -h"
 
 #Plugins
-plugins=(git brew colored-man extract git-extras node npm svn)
+plugins=(git brew colored-man extract git-extras node npm svn colorize)
 source $ZSH/oh-my-zsh.sh
 
 #Override
