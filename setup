@@ -76,7 +76,7 @@ n latest
 n stable
 
 log "Casking OSX Software ..."
-installcask adium
+installcask adium-beta
 installcask dropbox
 installcask evernote
 installcask expan-drive
@@ -85,10 +85,10 @@ installcask firefox
 installcask imagealpha
 installcask imageoptim
 installcask iterm2
-installcask sublime-text
+installcask sublime-text3
 installcask skype
 installcask the-unarchiver
-installcask vlc
+installcask virtualbox
 
 log "Cleanup Brew ..."
 brew cleanup
