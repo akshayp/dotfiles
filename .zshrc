@@ -1,8 +1,39 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
+# Set default user for powerline
+DEFAULT_USER="akshayp"
 # Set name of the theme to load.
-ZSH_THEME="wedisagree"
+ZSH_THEME="agnoster"
+
+#Functions
+
+function tree() {
+    if [ "$1" != "" ]  #if parameter exists, use as base folder
+       then cd "$1"
+       fi
+    pwd
+    ls -R | grep ":$" |   \
+       sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+    # 1st sed: remove colons
+    # 2nd sed: replace higher level folder names with dashes
+    # 3rd sed: indent graph three spaces
+    # 4th sed: replace first dash with a vertical bar
+    if [ `ls -F -1 | grep "/" | wc -l` = 0 ]   # check if no folders
+       then echo "   -> no sub-directories"
+    fi
+}
+
+function gitfork() {
+  username=($whoami)
+  fork=$(sed 's//hello/')
+  git clone "$1"
+  repo=$(basename $1 .git)
+  echo "Changing directory to: " $repo
+  cd $repo
+  echo "Adding upstream"
+  git remote add upstream $1
+}
 
 # Aliases
 
@@ -40,10 +71,12 @@ source $ZSH/oh-my-zsh.sh
 #Override
 alias l='lsemoji'
 alias la='lsemoji -la'
+alias lst='tree'
 
 # Exports
-export PATH=/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:$PATH
+export PATH=/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:/usr/local/opt/go/libexec/bin:$PATH
 export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
+export GOPATH=$HOME/Dev/go
 export TERM="xterm-color"
 export CLICOLOR="true"
 export LSCOLORS="exfxcxdxbxegedabagacad" #I like these LS colors better
@@ -66,3 +99,8 @@ eval "$(grunt --completion=zsh)"
 if [ -e ~/.zsh_local ]; then
     source ~/.zsh_local
 fi
+
+#Fix ulimit on OSX
+ulimit -n 10000
+
+fpath=(/usr/local/share/zsh-completions $fpath)
