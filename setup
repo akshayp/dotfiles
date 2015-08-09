@@ -5,7 +5,8 @@ green='\033[1;32m'
 yellow='\033[1;33m'
 blue='\033[1;34m'
 nocolor='\033[0m'
-dotfiles=`find . -type f -name ".*"`
+dotfiles=`find . -type f -name ".*" -maxdepth 1`
+dotfiledirs=`find . -maxdepth 1 -type d -not -iwholename "*.git" -not -wholename "."`
 homedir=${HOME}"/"
 dir=$(pwd)
 
@@ -18,22 +19,28 @@ function log() {
     echo -e "\n${green}${@}${nocolor}"
 }
 
+function info() {
+    echo -e "${blue}${@}${nocolor}"
+}
+
 function warning() {
     echo -e "\n⇏ ${yellow}${@}${nocolor}"
 }
 
 function brewski() {
+    info "   ├─ Brewing ${@}"
     brew install "${@}"
 }
 
 function installcask() {
+    info "   ├─ Casking ${@}"
     brew cask install "${@}" 2> /dev/null
 }
 
 # Start Magic
 if test ! $(which brew); then
     log "Installing Brew ✈ ✈ ✈"
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
     warning "Brew already installed"
 fi
@@ -47,15 +54,26 @@ brewski ack
 brewski colordiff
 brewski git
 brewski git-extras
-brewski node
+brewski n
 brewski ncdu
 brewski nmap
 brewski phantomjs
 brewski wget
-
-log "Installing Brew Cask ..."
+brewski hub
+brewski htop
+brewski go
+brewski flow
 brew tap phinze/homebrew-cask
 brewski brew-cask
+brewski ios_webkit_debug_proxy
+brewski memcached
+brewski mvn
+brewski selenium-server
+brewski ruby
+
+log "Install Node Latest and Stable"
+n latest
+n stable
 
 log "Casking OSX Software ..."
 installcask adium
@@ -75,14 +93,15 @@ installcask vlc
 log "Cleanup Brew ..."
 brew cleanup
 
-log "Install httpie"
-easy_install httpie
-
 log "Installing Global NPM Packages ..."
-npm install grunt-cli jshint nodemon jitsu nodemon depcheck http-server -g
+npm install grunt-cli pkgcount nodemon depcheck http-server jenkins-mocha mocha -g
 
 log "Linking Sublime Text CLI"
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
+if test ! $(which subl); then
+    ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
+else
+    warning "Sublime Text CLI already installed"
+fi
 
 log "Checking for ZSH ..."
 
@@ -95,14 +114,14 @@ else
     /usr/bin/env zsh
 fi
 
-log "Copying [dot]files ..."
-
-mkdir -p ~/dotfiles_old
-
 log "Adding zsh_local for overrides"
 if [ ! -e ~/.zsh_local ]; then
     touch ~/.zsh_local
 fi
+
+log "Copying [dot]files|dirs ..."
+
+mkdir -p ~/dotfiles_old
 
 for file in $dotfiles; do
     file=${file//.\/}
@@ -115,8 +134,24 @@ for file in $dotfiles; do
             mv ~/$file ~/dotfiles_old/
         fi
 
-        log "Linking $file to ~"
+        info "   ├─ Linking $file to ~"
         ln -s $dir/$file ~/$file
+    fi
+done
+
+for dotdir in $dotfiledirs; do
+    dotdir=${dotdir//.\/}
+
+    # Skip if it's already a symlink
+    if ! [ -d $homedir$dotdir ]; then
+
+        if [ -f $homedir$dotdir ]; then
+            warning "Backup $dir ~ to ~/dotfiles_old"
+            mv ~/$dotdir ~/dotfiles_old/
+        fi
+
+        info "   ├─ Linking $dotdir to ~"
+        ln -s $dir/$dotdir ~/$dotdir
     fi
 done
 
@@ -132,6 +167,7 @@ ascii "
 
 # Remove functions
 unset log
+unset info
 unset warning
 unset installcask
 unset brewski
