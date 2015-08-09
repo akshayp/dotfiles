@@ -1,5 +1,8 @@
 " General Settings"
 
+execute pathogen#infect()
+
+set t_Co=256
 set nocompatible
 set clipboard=unnamed
 set wildmenu
@@ -14,6 +17,8 @@ set noeol
 set exrc
 set secure
 
+let g:airline_powerline_fonts = 1
+
 " Make Code Editing Better"
 
 set modeline
@@ -22,6 +27,7 @@ set number
 syntax on
 set cursorline
 set tabstop=4
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 set hlsearch
 set ignorecase
@@ -35,6 +41,8 @@ set shortmess=atI
 set showmode
 set title
 set showcmd
+set lazyredraw
+set noshowmode
 
 if exists("&relativenumber")
     set relativenumber
@@ -42,6 +50,17 @@ if exists("&relativenumber")
 endif
 
 set scrolloff=3
+
+""""""""""""""""""""""""""""""
+" airline
+""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts   = 1
+let g:airline_theme             = 'powerlineish'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " Remaps"
 function! StripWhitespace()
