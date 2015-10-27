@@ -69,8 +69,6 @@ plugins=(git brew colored-man extract git-extras node npm svn colorize)
 source $ZSH/oh-my-zsh.sh
 
 #Override
-alias l='lsemoji'
-alias la='lsemoji -la'
 alias lst='tree'
 
 # Exports
