@@ -51,18 +51,15 @@ brew upgrade
 
 log "Installing Brew Binaries ..."
 brewski ack
-brewski colordiff
+brewski diff-so-fancy
 brewski git
 brewski git-extras
 brewski n
 brewski ncdu
-brewski nmap
-brewski phantomjs
 brewski wget
 brewski hub
 brewski htop
 brewski go
-brewski flow
 brew tap phinze/homebrew-cask
 brewski brew-cask
 brewski ios_webkit_debug_proxy
@@ -94,7 +91,7 @@ log "Cleanup Brew ..."
 brew cleanup
 
 log "Installing Global NPM Packages ..."
-npm install grunt-cli pkgcount nodemon depcheck http-server jenkins-mocha mocha -g
+npm install grunt-cli eslint eslint-plugin-react db-migrate pkgcount nodemon depcheck http-server mocha -g
 
 log "Linking Sublime Text CLI"
 if test ! $(which subl); then

@@ -36,3 +36,4 @@
 --ignore-dir=tmp
 --ignore-dir=vendor
 --ignore-dir=components-dist
+--ignore-dir=dist

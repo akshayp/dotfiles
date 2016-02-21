@@ -60,3 +60,6 @@
 
 [branch]
 	autosetuprebase = always
+[pager]
+	diff = diff-so-fancy
+	show = diff-so-fancy
