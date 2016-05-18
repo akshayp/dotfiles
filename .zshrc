@@ -64,20 +64,19 @@ alias sup="ps auxwww"
 alias df="df -h"
 
 #Plugins
-plugins=(git brew colored-man extract git-extras node npm svn colorize)
+plugins=(git brew colored-man docker extract git-extras node npm svn colorize)
 source $ZSH/oh-my-zsh.sh
 
 #Override
 alias lst='tree'
 
 # Exports
-export PATH=/usr/local/share/npm/bin:/home/y/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:/usr/local/opt/go/libexec/bin:$PATH
 export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
-export GOPATH=$HOME/Dev
+export GOPATH=$HOME/Dev/go
+export PATH=/usr/local/share/npm/bin:$GOPATH/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:/usr/local/opt/go/libexec/bin:$PATH
 export TERM="xterm-color"
 export CLICOLOR="true"
-# export LSCOLORS="exfxcxdxbxegedabagacad" #I like these LS colors better
-export EDITOR='subl -w'
+export EDITOR='subl -n -w'
 
 # History Management
 HISTFILE=~/.history

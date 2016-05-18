@@ -37,3 +37,5 @@
 --ignore-dir=vendor
 --ignore-dir=components-dist
 --ignore-dir=dist
+--ignore-dir=.vscode
+--ignore-dir=typings

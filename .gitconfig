@@ -58,6 +58,8 @@
         fi \
     }; f"
 
+    # Tree log
+    lst = !sh -c 'git log --graph --oneline --all'
 [branch]
 	autosetuprebase = always
 [pager]
