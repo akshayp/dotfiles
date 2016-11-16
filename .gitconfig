@@ -1,6 +1,7 @@
 [user]
     name = Akshay Patel
     email = akshayrpatel@gmail.com
+	signingkey = B3C09CF8F65DC094
 
 [core]
     excludesfile = ~/.gitignore
@@ -65,3 +66,7 @@
 [pager]
 	diff = diff-so-fancy
 	show = diff-so-fancy
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[commit]
+	gpgsign = true

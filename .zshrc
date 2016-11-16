@@ -64,19 +64,25 @@ alias sup="ps auxwww"
 alias df="df -h"
 
 #Plugins
-plugins=(git brew colored-man docker extract git-extras node npm svn colorize)
+plugins=(git colored-man docker extract git-extras node npm svn colorize)
 source $ZSH/oh-my-zsh.sh
 
 #Override
 alias lst='tree'
 
 # Exports
+export NPM_PATH="/usr/local/share/npm"
 export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
 export GOPATH=$HOME/Dev/go
-export PATH=/usr/local/share/npm/bin:$GOPATH/bin:/usr/local/bin:/usr/X11/bin:/usr/local/bin/localizr_cli/bin:/usr/local/opt/go/libexec/bin:$PATH
+export GOROOT=/usr/local/go
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+export PATH=$NPM_PATH/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:/usr/X11/bin:$PATH
 export TERM="xterm-color"
 export CLICOLOR="true"
 export EDITOR='subl -n -w'
+
+
 
 # History Management
 HISTFILE=~/.history
@@ -100,3 +106,5 @@ fi
 ulimit -n 10000
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+export PATH="$HOME/.yarn/bin:$PATH"

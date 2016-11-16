@@ -4,6 +4,7 @@ module.exports = {
         'node': true,
         'es6': true
     },
+    'parser': 'babel-eslint',
     'parserOptions': {
         'ecmaVersion': 6,
         'sourceType': 'module',
@@ -64,8 +65,15 @@ module.exports = {
         'react/no-danger': 2,
         'react/no-deprecated': 2,
         'react/no-direct-mutation-state': 2,
-        'react/no-direct-mutation-state': 2,
-        'react/sort-comp': 2,
+        'react/sort-comp': [2, {
+            order: [
+                'type-annotations',
+                'static-methods',
+                'lifecycle',
+                'everything-else',
+                'render'
+            ]
+        }],
         'react/wrap-multilines': 2,
         'semi': [2, 'always'],
         'space-before-blocks': 2,
@@ -75,5 +83,5 @@ module.exports = {
         'valid-jsdoc': 2,
         'wrap-iife': [2, 'inside']
     },
-    'plugins': ['react']
+    'plugins': ['react', 'babel', 'flowtype']
 };

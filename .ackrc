@@ -39,3 +39,5 @@
 --ignore-dir=dist
 --ignore-dir=.vscode
 --ignore-dir=typings
+--ignore-dir=Carthage
+--ignore-file=ext:jsbundle

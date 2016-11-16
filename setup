@@ -32,11 +32,6 @@ function brewski() {
     brew install "${@}"
 }
 
-function installcask() {
-    info "   ├─ Casking ${@}"
-    brew cask install "${@}" 2> /dev/null
-}
-
 # Start Magic
 if test ! $(which brew); then
     log "Installing Brew ✈ ✈ ✈"
@@ -57,35 +52,15 @@ brewski git-extras
 brewski n
 brewski ncdu
 brewski wget
-brewski hub
-brewski htop
 brewski go
-brew tap phinze/homebrew-cask
-brewski brew-cask
-brewski ios_webkit_debug_proxy
-brewski memcached
-brewski mvn
-brewski selenium-server
-brewski ruby
+brewski ack
+brewski gradle
+brewski postgresql
+brewski redis
 
 log "Install Node Latest and Stable"
 n latest
 n stable
-
-log "Casking OSX Software ..."
-installcask adium-beta
-installcask dropbox
-installcask evernote
-installcask expan-drive
-installcask google-chrome
-installcask firefox
-installcask imagealpha
-installcask imageoptim
-installcask iterm2
-installcask sublime-text3
-installcask skype
-installcask the-unarchiver
-installcask virtualbox
 
 log "Cleanup Brew ..."
 brew cleanup
