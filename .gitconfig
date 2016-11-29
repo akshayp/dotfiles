@@ -9,7 +9,7 @@
     whitespace = space-before-tab,trailing-space
 
 [color]
-	ui = auto
+	ui = always
 
 [color "branch"]
     current = yellow reverse
@@ -18,10 +18,11 @@
 
 [color "diff"]
     meta = yellow bold
+    commit = green bold
     frag = magenta bold
     old = red bold reverse white
     new = green bold reverse
-    whitespace = white reverse
+    whitespace = red reverse
 
 [color "status"]
     added = yellow
@@ -70,3 +71,6 @@
 	insteadOf = https://github.com/
 [commit]
 	gpgsign = true
+
+[help]
+    autocorrect = 1
