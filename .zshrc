@@ -1,10 +1,19 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Set default user for powerline
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
 DEFAULT_USER="akshayp"
 # Set name of the theme to load.
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 #Functions
 
@@ -64,25 +73,17 @@ alias sup="ps auxwww"
 alias df="df -h"
 
 #Plugins
-plugins=(git colored-man docker extract git-extras node npm svn colorize)
+plugins=(git colored-man-pages docker extract git-extras node npm colorize)
 source $ZSH/oh-my-zsh.sh
 
 #Override
 alias lst='tree'
 
 # Exports
-export NPM_PATH="/usr/local/share/npm"
-export NODE_PATH="/usr/local/lib/node_modules:/usr/local/share/npm"
-export GOPATH=$HOME/Dev/go
-export GOROOT=/usr/local/go
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-export PATH=$NPM_PATH/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/bin:/usr/X11/bin:$PATH
 export TERM="xterm-color"
 export CLICOLOR="true"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 export EDITOR='subl -n -w'
-
-
 
 # History Management
 HISTFILE=~/.history
@@ -94,17 +95,12 @@ setopt HIST_IGNORE_DUPS
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
-#Autocompletion
-eval "$(grunt --completion=zsh)"
-
 #Local zsh overrides
 if [ -e ~/.zsh_local ]; then
     source ~/.zsh_local
 fi
 
-#Fix ulimit on OSX
-ulimit -n 10000
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-export PATH="$HOME/.yarn/bin:$PATH"
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
